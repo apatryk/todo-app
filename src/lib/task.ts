@@ -10,7 +10,7 @@ export type tasksType = {
 export const addTask = (values: any) => {
   axios
     .post("http://localhost:4000/tasks", {
-      date: values.date,
+      date: values.dateString.format("YYYY-MM-DD"),
       description: values.description,
       title: values.title,
     })
@@ -22,12 +22,20 @@ export const addTask = (values: any) => {
     });
 };
 
-export const getTasks = async () => {
+export const getTodayTasks = async (todayDate: String) => {
   return await axios.get(
-    "http://localhost:4000/tasks"
+    "http://localhost:4000/tasks?date=" + todayDate
   );
 };
 
-export const getTaskById = async (value?: string) => {
-  return await axios.get("http://localhost:4000/tasks?id=" + value)
-}
+ export const updateTask = (taskId: number | undefined, updatedDate: String | null | undefined) => {
+  axios.patch('http://localhost:4000/tasks/' + taskId, {
+    date: updatedDate
+})
+    .then(response => {
+        console.log(response);
+    })
+    .catch(error => {
+        console.log(error);
+    });
+ }

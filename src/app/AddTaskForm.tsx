@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 import { addTask } from '../lib/task';
 
-export const MainPage: React.FC = () => {
+export const AddTaskForm: React.FC = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const showModal = () => {
         setIsModalVisible(true);
@@ -54,10 +54,10 @@ export const MainPage: React.FC = () => {
                     </Form.Item>
                     <Form.Item
                         label="Pick date"
-                        name="date"
+                        name="dateString"
                         rules={[{ required: true }]}
                     >
-                        <DatePicker />
+                        <DatePicker format="YYYY-MM-DD" />
                     </Form.Item>
 
                     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
@@ -71,4 +71,4 @@ export const MainPage: React.FC = () => {
     );
 }
 
-export default MainPage;
+export default AddTaskForm;

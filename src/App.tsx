@@ -4,7 +4,7 @@ import { Layout, Menu } from 'antd';
 import React, { useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 
-import MainPage from './app/MainPage';
+import MainPage, { AddTaskForm } from './app/AddTaskForm';
 import { TodayTasks } from './app/TodayTasks';
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -30,7 +30,7 @@ const App: React.FC = () => {
           </Header>
           <Content style={{ margin: '0 16px' }}>
             <Routes>
-              <Route path="/" element={<MainPage />} />
+              <Route path="/" element={<AddTaskForm />} />
               <Route path="today" element={<TodayTasks />} />
             </Routes>
           </Content>
